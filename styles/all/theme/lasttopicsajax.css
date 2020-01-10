@@ -1,0 +1,134 @@
+#lastTopicsBlock table.table1 thead th {
+	color:#4C5D77;
+	/*width:50%;*/
+	text-align:center;
+}
+#lastTopicsBlock table.table1 tbody tr:hover, table.table1 tbody tr.hover
+{
+    background-color: #F5F7FA;
+}
+#lastTopicsBlock table.table1 tbody tr td {
+	vertical-align:top;
+}
+#lastTopicsBlock table.table1  {
+    border-collapse:collapse;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 8; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    /*background-color: #fefefe;*/
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+#closeNew {
+    color: white;
+    float: right;
+    font-size: 16px;
+    font-weight: bold;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    }
+
+#closeNew:hover,
+#closeNew:focus {
+    color: Red;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    /*background-color: #5cb85c;*/
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+#loader_save
+{
+    display:none;
+	width:32px;
+	height:32px;
+	margin: auto;
+	background-image: url(./images/ajax-loader.gif);
+	
+}
+#closeNew {
+	display:none;
+}
+.action-bar1 {
+    /*background-color:Lime;*/	
+    /*border: 1px solid Red;*/
+}
+.table1.pagination {
+	white-space: nowrap;
+}
+.lt-pagination 
+{
+    color:Lime;	
+	white-space: nowrap;
+	float:left;
+	text-align:left;
+	margin-top:0;
+}
+.lt-pagination > ul > li {
+    display: inline-block !important;
+    padding: 0;
+    font-size: 100%;
+    line-height: normal;
+    vertical-align: middle;
+}
+.lt-markread {
+	cursor:pointer;
+	font-size: 12px;
+}
+.lt-marktopicread {
+	cursor:pointer;
+	/*font-size: 12px;*/
+}
+.lt-modal_active {
+	
+}
+#lastTopicsBlock table.table1 .active
+{
+    width:auto;
+}

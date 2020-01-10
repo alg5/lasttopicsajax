@@ -1,0 +1,132 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_ACP_LAST_TOPICS_AJAX}</h1>
+
+<p>{L_ACP_LAST_TOPICS_AJAX_EXPLAIN}<br />{L_ACP_LAST_TOPICS_COLUMNS_NUMBER_EXPLAIN}</p>
+
+<form id="acp_lasttopicsajax" method="post" action="{U_ACTION}">
+
+    <div id="blockLasttopicsajax">
+        <fieldset>
+            <legend>{L_ACP_LAST_TOPICS_SETTINGS_COMMON}</legend>
+            <dl>
+                <dt><label for="lasttopicsajax_rows_amount">{L_ACP_LAST_TOPICS_ROWS_NUMBER}{L_COLON}</label></dt>
+                <dd><input type="number" id="lasttopicsajax_rows_amount" name="lasttopicsajax_rows_amount"  min="1" max="25" value='{ROWS_AMOUNT}'   /></dd>
+            </dl>
+            <dl style="display:none;">
+                <dt><label for="lasttopicsajax_colums_amount">{L_ACP_LAST_TOPICS_COLUMNS_NUMBER}{L_COLON}</label><br /> 
+                    <span>{L_ACP_LAST_TOPICS_COLUMNS_NUMBER_EXPLAIN}</span>
+                </dt>
+                <dd><input type="number" id="lasttopicsajax_colums_amount" name="lasttopicsajax_colums_amount"  min="1" max="3" value='{COLUMNS_AMOUNT}'   /></dd>
+            </dl>
+            <dl>
+                <dt>
+                    <label for="lasttopicsajax_show_on_index">{L_ACP_LASTTOPICSAJAX_SHOW_ON_INDEX}{L_COLON}</label><br /> 
+                    <span>{L_ACP_LASTTOPICSAJAX_SHOW_ON_INDEX_EXPLAIN}</span>
+                </dt>
+                    <dd><label><input type="radio" name="lasttopicsajax_show_on_index" value="1" <!-- IF S_SHOW_ON_INDEX -->checked<!-- ENDIF --> class="radio" /> {L_YES}</label><label><input type="radio" name="lasttopicsajax_show_on_index" value="0" <!-- IF !S_SHOW_ON_INDEX -->checked<!-- ENDIF --> class="radio"> {L_NO}</label></dd>
+            </dl>
+            <dl>
+                <dt>
+                    <label for="lasttopicsajax_show_on_index_for_guests">{L_ACP_LASTTOPICSAJAX_SHOW_ON_INDEX_FOR_GUESTS}{L_COLON}</label><br /> 
+                    <span>{L_ACP_LASTTOPICSAJAX_SHOW_ON_INDEX_FOR_GUESTS_EXPLAIN}</span>
+                </dt>
+                    <dd><label><input type="radio" name="lasttopicsajax_show_on_index_for_guests" value="1" <!-- IF S_SHOW_ON_INDEX_FOR_GUESTS -->checked<!-- ENDIF --> class="radio" /> {L_YES}</label><label><input type="radio" name="lasttopicsajax_show_on_index_for_guests" value="0" <!-- IF !S_SHOW_ON_INDEX_FOR_GUESTS -->checked<!-- ENDIF --> class="radio"> {L_NO}</label></dd>
+            </dl>
+            <dl>
+                <dt><label for="lasttopicsajax_set_width_captions">{L_ACP_LASTTOPICSAJAX_SET_WIDTH_CAPTIONS}{L_COLON}</label><br /> 
+                    <span>{L_ACP_LASTTOPICSAJAX_SET_WIDTH_CAPTIONS_EXPLAIN}</span>
+                </dt>
+                <dd><input type="text" id="lasttopicsajax_set_width_captions" name="lasttopicsajax_set_width_captions"   value='{SET_WIDTH_CAPTIONS}'   /></dd>
+            </dl>
+            <dl>
+                <dt><label for="lasttopicsajax_ids_exclude">{L_ACP_LAST_TOPICS_EXCLUDE}{L_COLON}</label><br /> 
+                    <span>{L_ACP_LAST_TOPICS_EXCLUDE_EXPLAIN}</span>
+                </dt>
+                <dd><input type="text" id="lasttopicsajax_ids_exclude" name="lasttopicsajax_ids_exclude"   value='{IDS_EXCLUDE}'   /></dd>
+            </dl>       
+        </fieldset>
+        <fieldset>
+            <legend>{L_ACP_LAST_TOPICS_SETTINGS_COLUMNS}</legend>
+            <dl>
+                <dt><label for="lasttopicsajax_ids_column2">{L_ACP_LAST_TOPICS_LEFT_COLUMN}{L_COLON}</label><br /> 
+                    <span>{L_ACP_LAST_TOPICS_LEFT_COLUMN_EXPLAIN}</span>
+                </dt>
+                <dd>
+                    <fieldset>
+                        <legend></legend>
+                        <dl>
+                            <dt>
+                                <label for="lasttopicsajax_ids_column2">{L_ACP_LAST_TOPICS_IDFORUMS}{L_COLON}</label><br /> 
+                                    <span>{L_ACP_LAST_TOPICS_IDFORUMS_EXPLAIN}</span>
+                            </dt>
+                            <dd><input type="text" id="lasttopicsajax_ids_column2" name="lasttopicsajax_ids_column2"   value='{IDS_COLUMN2}'   /></dd>
+                            <dd><input type="checkbox" id="with_subforums_column2"  name="with_subforums_column2" {WITH_SUBFORUMS_COLUMN2}  /><label for="with_subforums_column2">{L_ACP_LASTTOPICSAJAX_WITH_SUBFORUMS}</label></dd>
+                            </dl>
+                            <dl>
+                                <dt><label for="lasttopicsajax_ids_column2">{L_ACP_LAST_TOPICS_TITLE}{L_COLON}</label></dt>
+		    <dd><input type="text" id="lasttopicsajax_title_column2" name="lasttopicsajax_title_column2"   value='{TITLE_COLUMN2}'   /></dd>
+                            </dl>
+                        </fieldset>
+                
+                </dd>
+            </dl>
+            <dl>
+                <dt><label for="lasttopicsajax_ids_column1">{L_ACP_LAST_TOPICS_MIDDLE_COLUMN}{L_COLON}</label><br /> 
+                <span>{L_ACP_LAST_TOPICS_MIDDLE_COLUMN_EXPLAIN}</span>
+                </dt>
+                <dd>
+                        <fieldset>
+                            <legend></legend>
+                            <dl>
+                                <dt>
+                                    <label for="lasttopicsajax_ids_column1">{L_ACP_LAST_TOPICS_IDFORUMS}{L_COLON}</label><br /> 
+                                        <span>{L_ACP_LAST_TOPICS_IDFORUMS_EXPLAIN}</span>
+                                </dt>
+                                <dd><input type="text" id="lasttopicsajax_ids_column1" name="lasttopicsajax_ids_column1"   value='{IDS_COLUMN1}'   /></dd>
+                                <dd><input type="checkbox" id="with_subforums_column1"  name="with_subforums_column1" {WITH_SUBFORUMS_COLUMN1} /><label for="with_subforums_column1">{L_ACP_LASTTOPICSAJAX_WITH_SUBFORUMS}</label></dd>
+ 
+                            </dl>
+                            <dl>
+                                <dt><label for="lasttopicsajax_ids_column1">{L_ACP_LAST_TOPICS_TITLE}{L_COLON}</label></dt>
+		                        <dd><input type="text" id="lasttopicsajax_title_column1" name="lasttopicsajax_title_column1"   value='{TITLE_COLUMN1}'   /></dd>
+                            </dl>
+                        </fieldset>
+                
+                </dd>
+            </dl>
+            <dl>
+		        <dt><label for="lasttopicsajax_ids_column0">{L_ACP_LAST_TOPICS_RIGHT_COLUMN}{L_COLON}</label><br /> 
+                    <span>{L_ACP_LAST_TOPICS_RIGHT_COLUMN_EXPLAIN}</span>
+                </dt>
+		        <dd>
+                        <fieldset>
+                            <legend></legend>
+                            <dl>
+                                <dt>
+                                    <label for="lasttopicsajax_ids_column0">{L_ACP_LAST_TOPICS_IDFORUMS}{L_COLON}</label><br /> 
+                                        <span>{L_ACP_LAST_TOPICS_IDFORUMS_EXPLAIN}</span>
+                                </dt>
+                                <dd><input type="text" id="lasttopicsajax_ids_column0" name="lasttopicsajax_ids_column0"   value='{IDS_COLUMN0}'   /></dd>
+                                <dd><input type="checkbox" id="with_subforums_column0"  name="with_subforums_column0" {WITH_SUBFORUMS_COLUMN0} /><label for="with_subforums_column2">{L_ACP_LASTTOPICSAJAX_WITH_SUBFORUMS}</label></dd>
+                                    </dl>
+                            <dl>
+                                <dt><label for="lasttopicsajax_ids_column0">{L_ACP_LAST_TOPICS_TITLE}{L_COLON}</label></dt>
+                                <dd><input type="text" id="lasttopicsajax_title_column0" name="lasttopicsajax_title_column0"   value='{TITLE_COLUMN0}'   /></dd>
+ 
+                            </dl>
+                        </fieldset>
+                </dd>
+            </dl>
+        </fieldset>
+        <fieldset class="submit-buttons">
+	        <legend>{L_SUBMIT}</legend>
+            <div id="loader_save"></div>
+            <button class="lp-send" type="submit" name="btnSend"  id="btnSend"><i class="fa fa-upload"></i> {L_EXPORT_STORE}</button>
+
+        </fieldset>   
+    </div>
+
+</form>
+
+<!-- INCLUDE overall_footer.html -->

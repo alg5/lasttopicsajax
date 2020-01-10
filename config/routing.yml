@@ -1,0 +1,24 @@
+
+alg_lasttopicsajax_controller_main:
+    path: /lasttopicsajax/
+    defaults: { _controller: alg.lasttopicsajax.lasttopicsajax_handler:main }
+alg_lasttopicsajax_controller:
+    path: /lasttopicsajax/{forum}
+    defaults: { _controller: alg.lasttopicsajax.lasttopicsajax_handler:main }
+    requirements:
+        forum: \d+
+alg_lasttopicsajax_controller_save:
+    path: /lasttopicsajax/save
+    defaults: { _controller: alg.lasttopicsajax.lasttopicsajax_handler:save_options }
+alg_lasttopicsajax_controller_popup:
+    path: /lasttopicsajax/popup
+    defaults: { _controller: alg.lasttopicsajax.lasttopicsajax_handler:last_in_popup }
+alg_lasttopicsajax_controller_pagination:
+    path: /lasttopicsajax/pagination
+    defaults: { _controller: alg.lasttopicsajax.lasttopicsajax_handler:last_col_pagination }
+alg_lasttopicsajax_controller_markread:
+    path: /lasttopicsajax/markread
+    defaults: { _controller: alg.lasttopicsajax.lasttopicsajax_handler:last_col_markread }
+alg_lasttopicsajax_controller_topicmarkread:
+    path: /lasttopicsajax/topicmarkread
+    defaults: { _controller: alg.lasttopicsajax.lasttopicsajax_handler:last_topic_markread }

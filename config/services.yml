@@ -1,0 +1,29 @@
+services:
+    alg.lasttopicsajax.listener:
+        class: alg\lasttopicsajax\event\listener
+        arguments:
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@ext.manager'
+            - '@alg.lasttopicsajax.lasttopicsajax_handler'
+        tags:
+            - { name: event.listener }
+    alg.lasttopicsajax.lasttopicsajax_handler:
+        class: alg\lasttopicsajax\controller\lasttopicsajax_handler
+        arguments:
+            - '@config'
+            - '@dbal.conn'
+            - '@auth'
+            - '@template'
+            - '@user'
+            - '@request'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+            - '@controller.helper'
+            - '@content.visibility'
+            - '@dispatcher'
+            - '@pagination'
+            - '@template_context'
+            - '@ext.manager'
