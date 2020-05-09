@@ -9,10 +9,9 @@
 
 namespace alg\lasttopicsajax\migrations;
 
-
 class v_1_0_0 extends \phpbb\db\migration\migration
 {
-    	const OFF = 0;
+	const OFF = 0;
 	const ON = 1;
 	public function effectively_installed()
 	{
@@ -43,21 +42,21 @@ class v_1_0_0 extends \phpbb\db\migration\migration
 	{
 		return array(
 			array('config.add', array('lasttopicsajax_version', '1.0.0')),
-                    array('config.add', array('lasttopicsajax_rows_amount', '5')),
-                    array('config.add', array('lasttopicsajax_colums_amount', '3')),    //not in use now
-                     array('config.add', array('lasttopicsajax_show_on_index', '1')),                   
-                    array('config.add', array('lasttopicsajax_show_on_index_for_guests', '1')),
-                    array('config.add', array('lasttopicsajax_set_width_captions', '0')),
-                    array('config.add', array('lasttopicsajax_ids_exclude', '')),
-                    array('config.add', array('lasttopicsajax_ids_column2', '')),
-                    array('config.add', array('lasttopicsajax_ids_column1', '')),
-                    array('config.add', array('lasttopicsajax_ids_column0', '*')),
-                    array('config.add', array('lasttopicsajax_title_column2', '')),
-                    array('config.add', array('lasttopicsajax_title_column1', '')),
-                    array('config.add', array('lasttopicsajax_title_column0', '')),
-                    array('config.add', array('lasttopicsajax_with_subforums_column2', v_1_0_0::OFF)),
-                    array('config.add', array('lasttopicsajax_with_subforums_column1', v_1_0_0::OFF)),
-                    array('config.add', array('lasttopicsajax_with_subforums_column0', v_1_0_0::OFF)),
+					array('config.add', array('lasttopicsajax_rows_amount', '5')),
+					array('config.add', array('lasttopicsajax_colums_amount', '3')),    //not in use now
+					 array('config.add', array('lasttopicsajax_show_on_index', '1')),                   
+					array('config.add', array('lasttopicsajax_show_on_index_for_guests', '1')),
+					array('config.add', array('lasttopicsajax_set_width_captions', '0')),
+					array('config.add', array('lasttopicsajax_ids_exclude', '')),
+					array('config.add', array('lasttopicsajax_ids_column2', '')),
+					array('config.add', array('lasttopicsajax_ids_column1', '')),
+					array('config.add', array('lasttopicsajax_ids_column0', '*')),
+					array('config.add', array('lasttopicsajax_title_column2', '')),
+					array('config.add', array('lasttopicsajax_title_column1', '')),
+					array('config.add', array('lasttopicsajax_title_column0', '')),
+					array('config.add', array('lasttopicsajax_with_subforums_column2', v_1_0_0::OFF)),
+					array('config.add', array('lasttopicsajax_with_subforums_column1', v_1_0_0::OFF)),
+					array('config.add', array('lasttopicsajax_with_subforums_column0', v_1_0_0::OFF)),
 
 			// Add ACP modules
 			array('module.add', array('acp', 'ACP_CAT_DOT_MODS', 'ACP_LAST_TOPICS_AJAX')),

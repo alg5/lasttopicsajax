@@ -43,7 +43,7 @@ class acp_lasttopicsajax_module
 			'WITH_SUBFORUMS_COLUMN2'	=> $config['lasttopicsajax_with_subforums_column2']  ? 'checked' : '',
 			'WITH_SUBFORUMS_COLUMN1'	=> $config['lasttopicsajax_with_subforums_column1'] ? 'checked' : '',
 			'WITH_SUBFORUMS_COLUMN0'	=> $config['lasttopicsajax_with_subforums_column0'] ? 'checked' : '',
- 			'U_LASTTOPICSAJAX_PATH_SAVE'	=> $controller->get_router_path('save'),
+			'U_LASTTOPICSAJAX_PATH_SAVE'	=> $controller->get_router_path('save'),
 		));
 	}
 }

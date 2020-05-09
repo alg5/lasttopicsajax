@@ -2,7 +2,7 @@
 /**
  *
  * @package lasttopicsajax
- * @copyright (c) 2014 alg 
+ * @copyright (c) 2014 alg
  * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
  *
  */
@@ -24,8 +24,8 @@ class listener implements EventSubscriberInterface
 
 	/** @var \phpbb\auth\auth */
 	protected $auth;
-    
-    /** @var \phpbb\template\template */
+
+	/** @var \phpbb\template\template */
 	protected $template;
 
 	/** @var \phpbb\user */
@@ -34,17 +34,16 @@ class listener implements EventSubscriberInterface
 	/** @var \phpbb\request\request_interface */
 	protected $request;
 
-    /** @var string phpbb_root_path */
+	/** @var string phpbb_root_path */
 	protected $phpbb_root_path;
 
 	/** @var string phpEx */
 	protected $php_ext;
-    
+
 	/** @var \phpbb\controller\helper */
 	protected $controller_helper;
 
-
-    /** @var \phpbb\template\context */
+/** @var \phpbb\template\context */
 	protected $template_context;
 
 	/** @var \phpbb\extension\manager */
@@ -87,8 +86,8 @@ class listener implements EventSubscriberInterface
 			'core.user_setup'           => 'user_setup',
 			'core.index_modify_page_title'           => 'index_modify_page_title',
 			'core.page_header_after'			=> 'page_header_after',
-            //'core.ucp_prefs_view_data'			=> 'ucp_prefs_view_data',
-            //'core.ucp_prefs_view_update_data'	=> 'ucp_prefs_view_update_data',
+			//'core.ucp_prefs_view_data'			=> 'ucp_prefs_view_data',
+			//'core.ucp_prefs_view_update_data'	=> 'ucp_prefs_view_update_data',
 		);
 	}
 	public function user_setup($event) {
@@ -101,49 +100,49 @@ class listener implements EventSubscriberInterface
 		$this->template->assign_vars(array(
 			'S_USER_SHOW_NEWS_ON_INDEX'	=> $this->user->data['lt_show_on_index'],
 		));
-    }
-    
-    public function index_modify_page_title($event)
-    {
-        $rowset = array();
-        $show_col2 =  $show_col1 = $show_col0 = false;
-        $show_news = true;
-        $show_news_on_index = (bool) $this->config['lasttopicsajax_show_on_index'];
-        //$set_width_captions = (int) $this->config['lasttopicsajax_set_width_captions'];
-      
-        if ($this->user->data['user_id'] == ANONYMOUS && !$this->config['lasttopicsajax_show_on_index_for_guests'])
-        {
-            $show_news_on_index = false;
-        }
-        if ($show_news_on_index && isset($this->user->data['lt_show_on_index']))
-        {
-            $show_news_on_index = (bool) $this->user->data['lt_show_on_index'];
-        }
-        if ($show_news_on_index)
-        {
-            $this->user->add_lang_ext('alg/lasttopicsajax', 'lasttopicsajax');
-            $this->user->add_lang_ext('alg/lasttopicsajax', 'info_acp_lasttopicsajax');
-            $start = 0;
-            $rowset = $this->lasttopicsajax_handler->get_latest_topics_by_column(2, $start);
-            if ($rowset)
-            {
-                $show_col2 = (bool) sizeof( $rowset) >0;
-            }
-            $rowset = $this->lasttopicsajax_handler->get_latest_topics_by_column(1, $start);
-            if ($rowset)
-            {            
-                $show_col1 = (bool) sizeof( $rowset) >0;
-            }
-            $rowset = $this->lasttopicsajax_handler->get_latest_topics_by_column(0, $start);
-            if ($rowset)
-            {            
-                $show_col0 = (bool) sizeof( $rowset) >0;
-            }
-            $show_news = $show_col0 || $show_col1 || $show_col2;
-        }
+	}
 
-        $show_news_on_index = $show_news && $show_news_on_index;
-        $this->template->assign_vars(array(
+	public function index_modify_page_title($event)
+	{
+		$rowset = array();
+		$show_col2 =  $show_col1 = $show_col0 = false;
+		$show_news = true;
+		$show_news_on_index = (bool) $this->config['lasttopicsajax_show_on_index'];
+		//$set_width_captions = (int) $this->config['lasttopicsajax_set_width_captions'];
+	  
+		if ($this->user->data['user_id'] == ANONYMOUS && !$this->config['lasttopicsajax_show_on_index_for_guests'])
+		{
+			$show_news_on_index = false;
+		}
+		if ($show_news_on_index && isset($this->user->data['lt_show_on_index']))
+		{
+			$show_news_on_index = (bool) $this->user->data['lt_show_on_index'];
+		}
+		if ($show_news_on_index)
+		{
+			$this->user->add_lang_ext('alg/lasttopicsajax', 'lasttopicsajax');
+			$this->user->add_lang_ext('alg/lasttopicsajax', 'info_acp_lasttopicsajax');
+			$start = 0;
+			$rowset = $this->lasttopicsajax_handler->get_latest_topics_by_column(2, $start);
+			if ($rowset)
+			{
+				$show_col2 = (bool) sizeof( $rowset) >0;
+			}
+			$rowset = $this->lasttopicsajax_handler->get_latest_topics_by_column(1, $start);
+			if ($rowset)
+			{            
+				$show_col1 = (bool) sizeof( $rowset) >0;
+			}
+			$rowset = $this->lasttopicsajax_handler->get_latest_topics_by_column(0, $start);
+			if ($rowset)
+			{            
+				$show_col0 = (bool) sizeof( $rowset) >0;
+			}
+			$show_news = $show_col0 || $show_col1 || $show_col2;
+		}
+
+		$show_news_on_index = $show_news && $show_news_on_index;
+		$this->template->assign_vars(array(
 			'U_LASTTOPICSAJAX_PATH_POPUP'	=> str_replace('../', '', $this->lasttopicsajax_handler->get_router_path('popup')),
 			'NEWEST_POST_IMG'	=> $this->user->img('icon_topic_newest', 'VIEW_NEWEST_POST'),
 			'LATEST_POST_IMG'	=> $this->user->img('icon_topic_latest', 'VIEW_LATEST_POST'),
@@ -156,13 +155,13 @@ class listener implements EventSubscriberInterface
 			'S_SHOW_NEWS'	=> $show_news,
 			'S_SHOW_NEWS_ON_INDEX'	=> $show_news_on_index,
 		));        
-    }
-    public function page_header_after($event)
-    {
-        $this->user->add_lang_ext('alg/lasttopicsajax', 'lasttopicsajax');
-        $this->user->add_lang_ext('alg/lasttopicsajax', 'info_acp_lasttopicsajax');
-        
-        $this->template->assign_vars(array(
+	}
+	public function page_header_after($event)
+	{
+		$this->user->add_lang_ext('alg/lasttopicsajax', 'lasttopicsajax');
+		$this->user->add_lang_ext('alg/lasttopicsajax', 'info_acp_lasttopicsajax');
+		
+		$this->template->assign_vars(array(
 			'U_LASTTOPICSAJAX_PATH_POPUP'				=> $this->lasttopicsajax_handler->get_router_path('popup'),
 			'U_LASTTOPICSAJAX_PATH_MARKREAD'			=> $this->lasttopicsajax_handler->get_router_path('markread'),
  			'U_LASTTOPICSAJAX_PATH_TOPICMARKREAD'			=> $this->lasttopicsajax_handler->get_router_path('topicmarkread'),
@@ -170,8 +169,8 @@ class listener implements EventSubscriberInterface
  			'S_ROWS_AMOUNT'			=> isset($this->config['lasttopicsajax_rows_amount'] ) ? (int) $this->config['lasttopicsajax_rows_amount'] : 5,
 			'S_TOPICPREVIEW'	=>  (bool) $this->phpbb_extension_manager->is_enabled('vse/topicpreview'),
 		));        
-    }
-	
+	}
+
 	public function ucp_prefs_view_data($event) {
 		$data = $event['data'];
 		$data = array_merge($data, array(
@@ -192,17 +191,16 @@ class listener implements EventSubscriberInterface
 		$event['sql_ary'] = $sql_ary;
 	}
 
-   
-    private function character_limit(&$title, $limit = 0)
-    {
-       $title = censor_text($title);
-       if ($limit > 0)
-       {
-	      return (utf8_strlen($title) > $limit + 3) ? truncate_string($title, $limit) . '...' : $title;
-       }
-       else
-       {
-	      return $title;
-       }
-    }
+	private function character_limit(&$title, $limit = 0)
+	{
+	   $title = censor_text($title);
+	   if ($limit > 0)
+	   {
+		  return (utf8_strlen($title) > $limit + 3) ? truncate_string($title, $limit) . '...' : $title;
+	   }
+	   else
+	   {
+		  return $title;
+	   }
+	}
 }

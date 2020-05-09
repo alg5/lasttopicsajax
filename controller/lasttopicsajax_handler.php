@@ -104,7 +104,7 @@ class lasttopicsajax_handler
 			$json_response = new \phpbb\json_response;
 			$json_response->send($this->error);
 		}
- 
+
 		$save_data = array(
 			'lasttopicsajax_rows_amount'	=> $lasttopicsajax_rows_amount,
 			'lasttopicsajax_colums_amount'	=>$lasttopicsajax_colums_amount,
@@ -186,17 +186,17 @@ class lasttopicsajax_handler
 						$sql = 'SELECT left_id, right_id  FROM ' . FORUMS_TABLE . ' WHERE forum_id =' . $fid;
 						$result = $this->db->sql_query($sql);
 						$row_res = $this->db->sql_fetchrow($result);
-						$this->db->sql_freeresult($result); 
+						$this->db->sql_freeresult($result);
 						$left_id = $row_res['left_id'];
-						$sql = 'SELECT forum_id  FROM ' . FORUMS_TABLE . 
+						$sql = 'SELECT forum_id  FROM ' . FORUMS_TABLE .
 								' WHERE left_id >=' . $row_res['left_id'] . ' AND right_id <=' . $row_res['right_id'];
 						$result = $this->db->sql_query($sql);
 						while ($row = $this->db->sql_fetchrow($result))
 						{
 							array_push($col_forums, $row['forum_id']);
 						}
-						$this->db->sql_freeresult($result); 
- 					}
+						$this->db->sql_freeresult($result);
+					}
 				}
 				$col_forums = array_unique($col_forums);
 			}
@@ -251,7 +251,7 @@ class lasttopicsajax_handler
 						$sql = 'SELECT left_id, right_id  FROM ' . FORUMS_TABLE . ' WHERE forum_id =' . $fid;
 						$result = $this->db->sql_query($sql);
 						$row_res = $this->db->sql_fetchrow($result);
-						$this->db->sql_freeresult($result); 
+						$this->db->sql_freeresult($result);
 						$left_id = $row_res['left_id'];
 						$sql = 'SELECT forum_id  FROM ' . FORUMS_TABLE .  ' WHERE left_id >=' . $row_res['left_id'] . ' AND right_id <=' . $row_res['right_id'];
 						$result = $this->db->sql_query($sql);
@@ -259,10 +259,10 @@ class lasttopicsajax_handler
 						{
 							array_push($col_forums, $row['forum_id']);
 						}
-						$this->db->sql_freeresult($result); 
+						$this->db->sql_freeresult($result);
 					}
-				}  
-				$col_forums = array_unique($col_forums); 
+				}
+				$col_forums = array_unique($col_forums);
 				$where = ' topic_status <> ' . ITEM_MOVED  . '  AND t.topic_visibility = ' .  ITEM_APPROVED .  ' AND ' . $this->db->sql_in_set('f.forum_id', $col_forums, false);
 				if (sizeof($ex_fid_ary))
 				{
@@ -317,7 +317,7 @@ class lasttopicsajax_handler
 							'ON'	=> 't.topic_last_poster_id = u.user_id',
 						),
 					),
-					'WHERE'		=> $where , 
+					'WHERE'		=> $where ,
 					'ORDER_BY'	=> 't.topic_last_post_time DESC',
 				);
 			/**
@@ -328,8 +328,8 @@ class lasttopicsajax_handler
 			* @since 1.0.0
 			*/
 			$vars = array('sql_array');
-			extract($this->dispatcher->trigger_event('alg.lasttopicsajax.sql_latest_topics_col_' . $num, compact($vars)));	
-			$result = $this->db->sql_query_limit($this->db->sql_build_query('SELECT', $sql_array),  $howmany, $start); 
+			extract($this->dispatcher->trigger_event('alg.lasttopicsajax.sql_latest_topics_col_' . $num, compact($vars)));
+			$result = $this->db->sql_query_limit($this->db->sql_build_query('SELECT', $sql_array),  $howmany, $start);
 
 			$row_count = 0;
 			while ($row = $this->db->sql_fetchrow($result))
@@ -404,7 +404,7 @@ class lasttopicsajax_handler
 					$vars = array('row', 'tpl_ary');
 					extract($this->dispatcher->trigger_event('alg.lasttopicssajax.modify_tpl_ary_latest_topics_' . $num, compact($vars)));
 					$rowset_dst[] = $tpl_ary;
-					$this->template->assign_block_vars('latest_topics_' . $num, $tpl_ary);  
+					$this->template->assign_block_vars('latest_topics_' . $num, $tpl_ary);
 				}//end if
 			}//end while
 			//pagination
@@ -446,7 +446,7 @@ class lasttopicsajax_handler
 			'TOPICPREVIEW_DRIFT'	=> (isset($this->config['topic_preview_drift'])) ? $this->config['topic_preview_drift'] : 15,
 			'TOPICPREVIEW_WIDTH'	=> (!empty($this->config['topic_preview_width'])) ? $this->config['topic_preview_width'] : 360,
 			'TOPICPREVIEW_THEME'	=> (!empty($this->user->style['topic_preview_theme'])) ? $this->user->style['topic_preview_theme'] : 'light',
-		)); 
+		));
 		return $this->controller_helper->render('lasttopicsajax_body.html');
 	}
 	public function last_col_pagination()
@@ -554,26 +554,26 @@ class lasttopicsajax_handler
 		}
 		foreach ($pagination_arr as $item)
 		{
-		if($item['S_IS_PREV'])
-		{
-			$str .= 	'<li  data-col-prev="' . $col_num .'" class="arrow previous"><a class="button button-icon-only" href="' . $item['PAGE_URL'] .'" rel="prev" role="button"><i class="icon fa-chevron-left fa-fw" aria-hidden="true"></i><span class="sr-only">{L_PREVIOUS}</span></a></li>';
-		}
-		else if($item['S_IS_CURRENT'])
+			if ($item['S_IS_PREV'])
 			{
-			 $str .= '<li data-col-pagenum="' . $col_num .'" class="active"><span>' . $item['PAGE_NUMBER'] . '</span></li>';
+				$str .= 	'<li  data-col-prev="' . $col_num .'" class="arrow previous"><a class="button button-icon-only" href="' . $item['PAGE_URL'] .'" rel="prev" role="button"><i class="icon fa-chevron-left fa-fw" aria-hidden="true"></i><span class="sr-only">{L_PREVIOUS}</span></a></li>';
+			}
+			else if ($item['S_IS_CURRENT'])
+			{
+				$str .= '<li data-col-pagenum="' . $col_num .'" class="active"><span>' . $item['PAGE_NUMBER'] . '</span></li>';
 			}
 			else if($item['S_IS_ELLIPSIS'])
-				{
-				 $str .= '<li class="ellipsis" role="separator"><span>' . $this->user->lang['ELLIPSIS'] . '</span></li>';
-				}
-				else if($item['S_IS_NEXT'])
-					{
-						$str .= 	'<li  data-col-next="' . $col_num .'" class="arrow next"><a class="button button-icon-only" href="' . $item['PAGE_URL'] .'" rel="next" role="button"><i class="icon fa-chevron-right fa-fw" aria-hidden="true"></i><span class="sr-only">{L_NEXT}</span></a></li>';
-					}
-					else
-					{
-						$str .= 	'<li><a class="button" href="' . $item['PAGE_URL'] .'" role="button">' . $item['PAGE_NUMBER'] .'</a></li>';
-					}
+			{
+			 $str .= '<li class="ellipsis" role="separator"><span>' . $this->user->lang['ELLIPSIS'] . '</span></li>';
+			}
+			else if($item['S_IS_NEXT'])
+			{
+				$str .= 	'<li  data-col-next="' . $col_num .'" class="arrow next"><a class="button button-icon-only" href="' . $item['PAGE_URL'] .'" rel="next" role="button"><i class="icon fa-chevron-right fa-fw" aria-hidden="true"></i><span class="sr-only">{L_NEXT}</span></a></li>';
+			}
+			else
+			{
+				$str .= 	'<li><a class="button" href="' . $item['PAGE_URL'] .'" role="button">' . $item['PAGE_NUMBER'] .'</a></li>';
+			}
 		}
 		$str .= 	'</ul>';
 		return $str;
@@ -602,7 +602,7 @@ class lasttopicsajax_handler
 			}
 			$is_topicpreview = $this->phpbb_extension_manager->is_enabled('vse/topicpreview');
 			//append for preview
-			 if($is_topicpreview)
+			if($is_topicpreview)
 			{
 				$str .= 	htmlentities('<div class="topic_preview_content" style="display:none;">');
 				$str .= 	htmlentities('<strong>' . $this->user->lang['FIRST_POST']  . '<hr>');

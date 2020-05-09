@@ -1,11 +1,11 @@
 <?php
-/** 
+/**
 *
 * lasttopics [Russian]
 *
 * @package lasttopics
 * @copyright (c) 2014 alg
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License 
+* @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 */
 
@@ -60,9 +60,9 @@ $lang = array_merge($lang, array(
 	'ACP_LASTTOPICSAJAX_SHOW_ON_INDEX_EXPLAIN'				=> 'Если опция выбрана, блок с последними темами будет показываться вверху главной страницы форума',
 	'ACP_LASTTOPICSAJAX_SHOW_ON_INDEX_FOR_GUESTS'				=> 'Показывать на главной странице для гостей',
 	'ACP_LASTTOPICSAJAX_SHOW_ON_INDEX_FOR_GUESTS_EXPLAIN'				=> 'Релевантно при выборе опции "Показывать на главной странице"',
-              'ACP_LASTTOPICSAJAX_SET_WIDTH_CAPTIONS'				=> 'Ограничить число символов в заголовке',
-	'ACP_LASTTOPICSAJAX_SET_WIDTH_CAPTIONS_EXPLAIN'				=> '0 - длина заголовка не ограничивается',	
-              'ACP_LASTTOPICSAJAX_WITH_SUBFORUMS'				=> 'Включая все подфорумы',
-           
-            'UCP_LASTTOPICSAJAX_SHOW_ON_INDEX'						=> 'Показывать последние темы на главной странице',
+			'ACP_LASTTOPICSAJAX_SET_WIDTH_CAPTIONS'				=> 'Ограничить число символов в заголовке',
+	'ACP_LASTTOPICSAJAX_SET_WIDTH_CAPTIONS_EXPLAIN'				=> '0 - длина заголовка не ограничивается',
+	'ACP_LASTTOPICSAJAX_WITH_SUBFORUMS'				=> 'Включая все подфорумы',
+
+	'UCP_LASTTOPICSAJAX_SHOW_ON_INDEX'						=> 'Показывать последние темы на главной странице',
 ));
