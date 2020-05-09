@@ -1,12 +1,3 @@
-
-alg_lasttopicsajax_controller_main:
-    path: /lasttopicsajax/
-    defaults: { _controller: alg.lasttopicsajax.lasttopicsajax_handler:main }
-alg_lasttopicsajax_controller:
-    path: /lasttopicsajax/{forum}
-    defaults: { _controller: alg.lasttopicsajax.lasttopicsajax_handler:main }
-    requirements:
-        forum: \d+
 alg_lasttopicsajax_controller_save:
     path: /lasttopicsajax/save
     defaults: { _controller: alg.lasttopicsajax.lasttopicsajax_handler:save_options }

@@ -20,7 +20,7 @@ class acp_lasttopicsajax_module
 
 	public function main($id, $mode)
 	{
-		global $user, $template, $request, $config, $phpbb_container;
+		global $user, $template, $config, $phpbb_container;
 		$controller = $phpbb_container->get('alg.lasttopicsajax.lasttopicsajax_handler');
 
 		$user->add_lang('acp/common');
@@ -32,7 +32,7 @@ class acp_lasttopicsajax_module
 			'COLUMNS_AMOUNT'		=> $config['lasttopicsajax_colums_amount'],
 			'S_SHOW_ON_INDEX'	=> (bool) $config['lasttopicsajax_show_on_index'],
 			'S_SHOW_ON_INDEX_FOR_GUESTS'	=> (bool) $config['lasttopicsajax_show_on_index_for_guests'],
-                                           'SET_WIDTH_CAPTIONS'			    => $config['lasttopicsajax_set_width_captions'],
+			'SET_WIDTH_CAPTIONS'			    => $config['lasttopicsajax_set_width_captions'],
 			'IDS_EXCLUDE'			    => $config['lasttopicsajax_ids_exclude'],
 			'IDS_COLUMN2'			    => $config['lasttopicsajax_ids_column2'],
 			'IDS_COLUMN1'			    => $config['lasttopicsajax_ids_column1'],
@@ -43,8 +43,7 @@ class acp_lasttopicsajax_module
 			'WITH_SUBFORUMS_COLUMN2'	=> $config['lasttopicsajax_with_subforums_column2']  ? 'checked' : '',
 			'WITH_SUBFORUMS_COLUMN1'	=> $config['lasttopicsajax_with_subforums_column1'] ? 'checked' : '',
 			'WITH_SUBFORUMS_COLUMN0'	=> $config['lasttopicsajax_with_subforums_column0'] ? 'checked' : '',
-                      
-			'U_LASTTOPICSAJAX_PATH_SAVE'	=> $controller->get_router_path('save'),
+ 			'U_LASTTOPICSAJAX_PATH_SAVE'	=> $controller->get_router_path('save'),
 		));
 	}
 }

@@ -132,3 +132,9 @@
 {
     width:auto;
 }
+.lt-pagination-go
+{
+    max-width: 58px;
+    padding: 0 !important;
+    border: 1px solid red;
+}

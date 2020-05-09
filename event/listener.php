@@ -55,18 +55,18 @@ class listener implements EventSubscriberInterface
 
 	/**
 	* Constructor
-	* @param \phpbb\config\config				        $config				Config object
-	* @param \phpbb\db\driver\driver_interface	$db					DBAL object
-	* @param \phpbb\auth\auth					        $auth				Auth object
-	* @param \phpbb\template\template             $template          Template object
-	* @param \phpbb\user						            $user				User object
-	* @param \phpbb\request\request_interface   $request            Request object
-	* @param string								            $phpbb_root_path	phpbb_root_path
-	* @param string								            $php_ext			phpEx
-	* @param \phpbb\controller\helper			        $controller_helper	Controller helper object
-	 * @param \phpbb\template\context               $template_context   Template object
-	 * @param \phpbb\extension\manager            $phpbb_extension_manager
-	* @param array								                $return_error		array
+	* @param \phpbb\config\config			$config					Config object
+	* @param \phpbb\db\driver\driver_interface	$db						DBAL object
+	* @param \phpbb\auth\auth				$auth					Auth object
+	* @param \phpbb\template\template             $template					Template object
+	* @param \phpbb\user					$user					User object
+	* @param \phpbb\request\request_interface   $request					Request object
+	* @param string						$phpbb_root_path			phpbb_root_path
+	* @param string						$php_ext					phpEx
+	* @param \phpbb\controller\helper			 $controller_helper			Controller helper object
+	 * @param \phpbb\template\context              $template_context			Template object
+	 * @param \phpbb\extension\manager           $phpbb_extension_manager	Extension manager object
+	* @param array						$return_error				array
 
 	* @access public
 	*/
@@ -86,7 +86,7 @@ class listener implements EventSubscriberInterface
 		return array(
 			'core.user_setup'           => 'user_setup',
 			'core.index_modify_page_title'           => 'index_modify_page_title',
-            'core.page_header_after'			=> 'page_header_after',
+			'core.page_header_after'			=> 'page_header_after',
             //'core.ucp_prefs_view_data'			=> 'ucp_prefs_view_data',
             //'core.ucp_prefs_view_update_data'	=> 'ucp_prefs_view_update_data',
 		);
@@ -144,12 +144,12 @@ class listener implements EventSubscriberInterface
 
         $show_news_on_index = $show_news && $show_news_on_index;
         $this->template->assign_vars(array(
-			'U_LASTTOPICSAJAX_PATH_POPUP'				=> str_replace('../', '', $this->lasttopicsajax_handler->get_router_path('popup')),
+			'U_LASTTOPICSAJAX_PATH_POPUP'	=> str_replace('../', '', $this->lasttopicsajax_handler->get_router_path('popup')),
 			'NEWEST_POST_IMG'	=> $this->user->img('icon_topic_newest', 'VIEW_NEWEST_POST'),
 			'LATEST_POST_IMG'	=> $this->user->img('icon_topic_latest', 'VIEW_LATEST_POST'),
-			'L_COL2'	=> $this->config['lasttopicsajax_title_column2'],
-			'L_COL1'	=> $this->config['lasttopicsajax_title_column1'],
-			'L_COL0'	=> $this->config['lasttopicsajax_title_column0'],
+			'TITLE_COL2'	=> $this->config['lasttopicsajax_title_column2'],
+			'TITLE_COL1'	=> $this->config['lasttopicsajax_title_column1'],
+			'TITLE_COL0'	=> $this->config['lasttopicsajax_title_column0'],
 			'SHOW_COL2'	=> $show_col2,
 			'SHOW_COL1'	=> $show_col1,
 			'SHOW_COL0'	=> $show_col0,

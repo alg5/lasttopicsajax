@@ -1,146 +1,139 @@
-<!-- IF  S_SHOW_NEWS  or true-->
+{% if  S_SHOW_NEWS %}
 <div id="lastTopicsBlock" class="forabg">
-    <div class="inner">
-        <span class="corners-top"><span></span></span><span id="closeNew" class="" ><i class="fa fa-times" aria-hidden="true"></i></span>
-            <ul class="topiclist" id="newTopicsHeader">
-                    <li class="header" style=' text-align: center;'><dl><dt>{L_LAST_NEWS}</dt><dd></dd></dl></li>
-            </ul>
-            <ul class="topiclist forums">
-                <li>
-                    <!--<table width="100%" border="0" cellpadding="0" cellspacing="7">-->
-                    <table class="table1 responsive" width="100%">
-                        <thead>
-                                        <tr>
-                                <!-- IF  SHOW_COL2 -->
-                                                    <th class="row1"><strong>{L_COL2}<span  data-col-markread="2" class="lt-markread" title="{L_MARK_TOPICS_READ}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span></strong></th>
-                                <!-- ENDIF -->
-                                <!-- IF  SHOW_COL1 -->
-                                                    <th class="row1"><strong>{L_COL1}<span  data-col-markread="1" class="lt-markread" title="{L_MARK_TOPICS_READ}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span></strong></th>
-                                <!-- ENDIF -->
-                                <!-- IF  SHOW_COL0 -->
-                                                    <th class="row1"><strong>{L_COL0}<span  data-col-markread="0" class="lt-markread" title="{L_MARK_TOPICS_READ}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span></strong></th>
-                                <!-- ENDIF -->
-                                        </tr>
-                        </thead>
-                        <tbody>
-                            <!-- IF  .lt_2  or  .lt_1  or  .lt_0   -->
-                            <tr>
-                            <!-- IF  SHOW_COL2 -->
-                                <td>
-                                    <div class="action-bar1">
-                                            <div class="pagination lt-pagination" data-col="2">
-                                                    <!-- INCLUDE pagination_col2.html -->
-                                            </div>
-                                    </div>
-                                </td>
-                            <!-- ENDIF -->
-                             <!-- IF  SHOW_COL1 -->
-                               <td>
-                                    <div class="action-bar1">
-                                            <div class="pagination lt-pagination" data-col="1">
-                                                    <!-- INCLUDE pagination_col1.html -->
-                                            </div>
-                                    </div>
-                                </td>
-                             <!-- ENDIF -->
-                             <!-- IF  SHOW_COL0 -->
-                                <td>
-                                    <div class="action-bar1">
-                                            <div class="pagination lt-pagination" data-col="0">
-                                                    <!-- INCLUDE pagination_col0.html -->
-                                            </div>
-                                    </div>
-                                </td>
-                            <!-- ENDIF -->
-                            </tr>
-                            <!-- ENDIF -->
-                            <tr>
-                                <!-- IF  SHOW_COL2 -->
-                                    <td  data-topics="2">
-                                            <ul style="list-style:none;">
-                                            <!-- BEGIN latest_topics_2 -->
-                                                <li>
-                                                <!-- IF latest_topics_2.S_UNREAD_TOPIC-->
-                                                    <span  data-topic_id="{latest_topics_2.TOPIC_ID}" data-forum_id="{latest_topics_2.FORUM_ID}" class="lt-marktopicread" title="{L_MARK_READ}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
-                                                        <a data-lt1_column="2" class="unread" href="{latest_topics_2.U_NEWEST_POST}">
-                                                                            <i class="icon fa-file fa-fw icon-red icon-md" aria-hidden="true"></i>
-                                                        </a>
-                                                        <a data-lt2_column="2" class="topictitle" href="{latest_topics_2.U_NEWEST_POST}" title="{latest_topics_2.FULL_TITLE}" class="link-new">{latest_topics_2.TITLE} ({latest_topics_2.TOPIC_REPLIES})</a>
-                                            <!-- ELSE -->
-                                                    <span  style="visibility:hidden;" data-topic_id="{latest_topics_2.TOPIC_ID}" data-forum_id="{latest_topics_2.FORUM_ID}" class="lt-marktopicread" title="{L_MARK_READ}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
-                                                    <a   data-lt1_column="2" href="{latest_topics_2.U_LAST_POST}">
-                                                            <i class="icon fa-file fa-fw icon-lightgray icon-md" aria-hidden="true"></i>
-                                                    </a>
-                                                    <a  data-lt2_column="2" class="topictitle" style='font-weight:normal;' href="{latest_topics_2.U_LAST_POST}" title="{latest_topics_2.FULL_TITLE}">{latest_topics_2.TITLE} ({latest_topics_2.TOPIC_REPLIES})</a>
-                                            <!-- ENDIF -->
-                                                        <br />
-                                                        <!-- EVENT topiclist_row_append -->
-                                                </li>
-
-                                                        <!-- END latest_topics_2 -->
-                                    </ul>
-                                                </td>
-                                <!-- ENDIF -->
-                                <!-- IF  SHOW_COL1 -->
-                                                <td  data-topics="1" >
-                                                        <ul style="list-style:none;">
-                                                        <!-- BEGIN latest_topics_1 -->
-                                    <li>
-                                                        <!-- IF latest_topics_1.S_UNREAD_TOPIC -->
-                                            <span  data-topic_id="{latest_topics_1.TOPIC_ID}" data-forum_id="{latest_topics_1.FORUM_ID}" class="lt-marktopicread" title="{L_MARK_READ}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
-                                                            <a data-lt1_column="1" class="unread" href="{latest_topics_1.U_NEWEST_POST}">
-                                                                                <i class="icon fa-file fa-fw icon-red icon-md" aria-hidden="true"></i>
-                                                                        </a>
-                                            <a data-lt2_column="1" class="topictitle" href="{latest_topics_1.U_NEWEST_POST}" title="{latest_topics_1.FULL_TITLE}" class="link-new">{latest_topics_1.TITLE} ({latest_topics_1.TOPIC_REPLIES})</a>
-                                                        <!-- ELSE -->
-                                             <span  style="visibility:hidden;" data-topic_id="{latest_topics_1.TOPIC_ID}" data-forum_id="{latest_topics_1.FORUM_ID}" class="lt-marktopicread" title="{L_MARK_READ}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
-                                            <a   data-lt1_column="1" href="{latest_topics_1.U_LAST_POST}">
-                                                                                <i class="icon fa-file fa-fw icon-lightgray icon-md" aria-hidden="true"></i>
-                                                                        </a>
-                                            <a  data-lt2_column="1" class="topictitle" style='font-weight:normal;' href="{latest_topics_1.U_LAST_POST}" title="{latest_topics_1.FULL_TITLE}">{latest_topics_1.TITLE} ({latest_topics_1.TOPIC_REPLIES})</a>
-                                                        <!-- ENDIF -->
-                                                        <br />
-                                        <!-- EVENT topiclist_row_append -->
-                                    </li>
-
-                                                        <!-- END latest_topics_1 -->
-                                    </ul>
-                                                </td>
-                                <!-- ENDIF -->
-                                <!-- IF  SHOW_COL0 -->
-                                                <td  data-topics="0" >
-                                                        <ul style="list-style:none;">
-                                                        <!-- BEGIN latest_topics_0 -->
-                                    <li>
-                                                        <!-- IF latest_topics_0.S_UNREAD_TOPIC -->
-                                            <span  data-topic_id="{latest_topics_0.TOPIC_ID}"  data-forum_id="{latest_topics_0.FORUM_ID}" class="lt-marktopicread" title="{L_MARK_READ}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
-                                                            <a data-lt1_column="0" class="unread" href="{latest_topics_0.U_NEWEST_POST}">
-                                                                                <i class="icon fa-file fa-fw icon-red icon-md" aria-hidden="true"></i>
-                                                                        </a>
-                                            <a data-lt2_column="0" class="topictitle" href="{latest_topics_0.U_NEWEST_POST}" title="{latest_topics_0.FULL_TITLE}" class="link-new">{latest_topics_0.TITLE} ({latest_topics_0.TOPIC_REPLIES})</a>
-                                                        <!-- ELSE -->
-                                             <span  style="visibility:hidden;" data-topic_id="{latest_topics_0.TOPIC_ID}" data-forum_id="{latest_topics_0.FORUM_ID}" class="lt-marktopicread" title="{L_MARK_READ}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
-                                            <a   data-lt1_column="0" href="{latest_topics_0.U_LAST_POST}">
-                                                                                <i class="icon fa-file fa-fw icon-lightgray icon-md" aria-hidden="true"></i>
-                                                                        </a>
-                                            <a  data-lt2_column="0" class="topictitle" style='font-weight:normal;' href="{latest_topics_0.U_LAST_POST}" title="{latest_topics_0.FULL_TITLE}">{latest_topics_0.TITLE} ({latest_topics_0.TOPIC_REPLIES})</a>
-                                                        <!-- ENDIF -->
-                                                        <br />
-                                        <!-- EVENT topiclist_row_append -->
-                                    </li>
-
-                                                        <!-- END latest_topics_0 -->
-                                    </ul>
-                                                </td>
-                            <!-- ENDIF -->
-                                    </tr>
-                        </tbody>
-			</table>
+	<div class="inner">
+		<span class="corners-top"><span></span></span><span id="closeNew" class="" ><i class="fa fa-times" aria-hidden="true"></i></span>
+		<ul class="topiclist" id="newTopicsHeader">
+			<li class="header" style=' text-align: center;'><dl><dt>{{ lang(LAST_NEWS) }}</dt><dd></dd></dl></li>
+		</ul>
+		<ul class="topiclist forums">
+			<li>
+				<table class="table1 responsive" width="100%">
+					<thead>
+						<tr>
+							{% if SHOW_COL2 %}
+								<th class="row1"><strong>{{ TITLE_COL2 }}<span  data-col-markread="2" class="lt-markread" title="{{ lang('MARK_TOPICS_READ') }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span></strong></th>
+							{% endif %}
+							{% if SHOW_COL1 %}
+								<th class="row1"><strong>{{ TITLE_COL1 }}<span  data-col-markread="1" class="lt-markread" title="{{ lang('MARK_TOPICS_READ') }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span></strong></th>
+							{% endif %}
+							{% if SHOW_COL0 %}
+								<th class="row1"><strong>{{ TITLE_COL0 }}<span  data-col-markread="0" class="lt-markread" title="{{ lang('MARK_TOPICS_READ') }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span></strong></th>
+							{% endif %}
+						</tr>
+					</thead>
+					<tbody>
+ 						<tr>
+							{% if SHOW_COL2 %}
+							<td>
+								<div class="action-bar1">
+									<div id="lt_pagination_2" class="pagination lt-pagination" data-col="2">
+										{% INCLUDE 'pagination_col2.html' %}
+									</div>
+								</div>
+							</td>
+							{% endif %}
+							{% if SHOW_COL1 %}
+								<td>
+									<div class="action-bar1">
+										<div class="pagination lt-pagination" data-col="1">
+											{% INCLUDE 'pagination_col1.html' %}
+										</div>
+									</div>
+								</td>
+							{% endif %}
+							{% if SHOW_COL0 %}
+								<td>
+									<div class="action-bar1">
+										<div class="pagination lt-pagination" data-col="0">
+											{% INCLUDE 'pagination_col0.html' %}
+										</div>
+									</div>
+								</td>
+							{% endif %}
+						</tr>
+						<tr>
+							{% if SHOW_COL2 %}
+							<td  data-topics="2">
+								<ul style="list-style:none;">
+									{% for topic in latest_topics_2 %}
+										<li>
+											{% if topic.S_UNREAD_TOPIC %}
+												<span  data-topic_id="{{ topic.TOPIC_ID }}" data-forum_id="{{ topic.FORUM_ID }}" class="lt-marktopicread" title="{{ lang(MARK_READ) }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+												<a data-lt1_column="2" class="unread" href="{{ topic.U_NEWEST_POST }}">
+													<i class="icon fa-file fa-fw icon-red icon-md" aria-hidden="true"></i> 
+												</a>
+												<a data-lt2_column="2" class="topictitle" href="{{ topic.U_NEWEST_POST }}" title="{{ topic.FULL_TITLE }}" class="link-new">{{ topic.TITLE }} ({{ topic.TOPIC_REPLIES }})</a>
+											{% else %}
+												<span  style="visibility:hidden;" data-topic_id="{{ topic.TOPIC_ID }}" data-forum_id="{{ topic.FORUM_ID }}" class="lt-marktopicread" title="{{ lang(MARK_READ) }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+												<a   data-lt1_column="2" href="{{ topic.U_LAST_POST }}">
+													<i class="icon fa-file fa-fw icon-lightgray icon-md" aria-hidden="true"></i>
+												</a>
+												<a  data-lt2_column="2" class="topictitle" style='font-weight:normal;' href="{{topic.U_LAST_POST }}" title="{{topic.FULL_TITLE }}">{{topic.TITLE }} ({{topic.TOPIC_REPLIES }})</a>
+											{% endif %}
+											<br />
+											{% EVENT topiclist_row_append %}
+										</li>
+									{% endfor %}
+								</ul>
+							</td>
+							{% endif %}
+							{% if SHOW_COL1 %}
+							<td  data-topics="1" >
+								<ul style="list-style:none;">
+									{% for topic in latest_topics_1 %}
+										<li>
+											{% if topic.S_UNREAD_TOPIC %}
+												<span  data-topic_id="{{topic.TOPIC_ID }}}" data-forum_id="{{topic.FORUM_ID }}" class="lt-marktopicread" title="{{ lang(MARK_READ) }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+												<a data-lt1_column="1" class="unread" href="{{ topic.U_NEWEST_POST }}">
+													<i class="icon fa-file fa-fw icon-red icon-md" aria-hidden="true"></i>
+												</a>
+												<a data-lt2_column="1" class="topictitle" href="{{ topic.U_NEWEST_POST }}" title="{{ topic.FULL_TITLE }}" class="link-new">{{ topic.TITLE }}} ({{ topic.TOPIC_REPLIES }})</a>
+											{% else %}
+												<span  style="visibility:hidden;" data-topic_id="{{ topic.TOPIC_ID }}" data-forum_id="{{ topic.FORUM_ID }}" class="lt-marktopicread" title="{{ lang(MARK_READ) }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+												<a   data-lt1_column="1" href="{{ topic.U_LAST_POST }}}">
+													<i class="icon fa-file fa-fw icon-lightgray icon-md" aria-hidden="true"></i>
+												</a>
+												<a  data-lt2_column="1" class="topictitle" style='font-weight:normal;' href="{{ topic.U_LAST_POST }}" title="{{ topic.FULL_TITLE }}">{{ topic.TITLE }} ({{ topic.TOPIC_REPLIES }})</a>
+											{% endif %}
+											{% EVENT topiclist_row_append %}
+										</li>
+									{% endfor %}
+								</ul>
+							</td>
+							{% endif %}
+							{% if SHOW_COL0 %}
+							<td  data-topics="0" >
+								<ul style="list-style:none;">
+									{% for topic in latest_topics_0 %}
+										<li>
+											{% if topic.S_UNREAD_TOPIC %}
+												<span  data-topic_id="{{ topic.TOPIC_ID }}"  data-forum_id="{{ topic.FORUM_ID }}" class="lt-marktopicread" title="{{ lang('MARK_READ') }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+												<a data-lt1_column="0" class="unread" href="{{topic.U_NEWEST_POST }}">
+													<i class="icon fa-file fa-fw icon-red icon-md" aria-hidden="true"></i>
+												</a>
+												<a data-lt2_column="0" class="topictitle" href="{{ topic.U_NEWEST_POST }}" title="{{ topic.FULL_TITLE }}" class="link-new">{{ topic.TITLE }} ({{ topic.TOPIC_REPLIES }})</a>
+											{% else %}
+												<span  style="visibility:hidden;" data-topic_id="{{ topic.TOPIC_ID }}" data-forum_id="{{ topic.FORUM_ID }}" class="lt-marktopicread" title="{{ lang('MARK_READ') }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+												<a   data-lt1_column="0" href="{{ topic.U_LAST_POST }}">
+													<i class="icon fa-file fa-fw icon-lightgray icon-md" aria-hidden="true"></i>
+												</a>
+												<a  data-lt2_column="0" class="topictitle" style='font-weight:normal;' href="{{ topic.U_LAST_POST }}" title="{{ topic.FULL_TITLE }}">{{ topic.TITLE }} ({{ topic.TOPIC_REPLIES }})</a>
+											{% endif %}
+											<br />
+											{% EVENT topiclist_row_append %}
+										</li>
+									{% endfor %}
+								</ul>
+							</td>
+							{% endif %}
+						</tr>
+					</tbody>
+				</table>
 			</li>	
 		</ul>
 		<span class="corners-bottom"><span></span></span>
 	</div>
 </div>
 <br style="clear:both" />
-<!-- ENDIF -->
+{% endif %}
 

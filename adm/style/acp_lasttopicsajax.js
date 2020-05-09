@@ -159,18 +159,6 @@
             });
         });
 
-
-
-
-        //        $("#group_edit").on("click", function () {
-        //            $("#blockGroups").show();
-        //        });
-
-        //        $("#groups").on("click", function () {
-        //            $("#groupapproval_name").val($(this).find("option:selected").text());
-        //            $("#hGroupId").val($(this).find("option:selected").val());
-        //        });
-
         function get_forum_options(data)
         {
     console.log(data);

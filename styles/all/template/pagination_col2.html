@@ -1,31 +1,34 @@
-<ul>
-<!-- IF LT_2_BASE_URL and LT_2_TOTAL_PAGES > 6  -->
-	<li class="dropdown-container dropdown-button-control dropdown-page-jump page-jump">
-		<a class="button button-icon-only dropdown-trigger" href="#" title="{L_JUMP_TO_PAGE_CLICK}" role="button"><i class="icon fa-level-down fa-rotate-270" aria-hidden="true"></i><span class="sr-only">{LT_2_PAGE_NUMBER}</span></a>
-		<div class="dropdown hidden">
-			<div class="pointer"><div class="pointer-inner"></div></div>
-			<ul class="dropdown-contents">
-				<li>{L_JUMP_TO_PAGE}{L_COLON}</li>
-				<li class="page-jump-form">
-					<input type="number" name="page-number" min="1" max="999999" title="{L_JUMP_PAGE}" class="inputbox tiny" data-per-page="{LT_2_PER_PAGE}" data-base-url="{LT_2_BASE_URL|e('html_attr')}" data-start-name="{LT_2_START_NAME}" />
-					<input class="button2" value="{L_GO}" type="button" />
-				</li>
-			</ul>
-		</div>
-	</li>
-<!-- ENDIF -->
 
-<!-- BEGIN lt_2 -->
-	<!-- IF lt_2.S_IS_PREV -->
-	<li  data-col-prev="2" class="arrow previous"><a class="button button-icon-only" href="{lt_2.PAGE_URL}" rel="prev" role="button"><i class="icon fa-chevron-left fa-fw" aria-hidden="true"></i><span class="sr-only">{L_PREVIOUS}</span></a></li>
-	<!-- ELSEIF lt_2.S_IS_CURRENT -->
-	<li data-col-pagenum="2" class="active"><span>{lt_2.PAGE_NUMBER}</span></li>
-	<!-- ELSEIF lt_2.S_IS_ELLIPSIS -->
-	<li class="ellipsis" role="separator"><span>{L_ELLIPSIS}</span></li>
-	<!-- ELSEIF lt_2.S_IS_NEXT -->
-	<li  data-col-next="2" class="arrow next"><a class="button button-icon-only" href="{lt_2.PAGE_URL}" rel="next" role="button"><i class="icon fa-chevron-right fa-fw" aria-hidden="true"></i><span class="sr-only">{L_NEXT}</span></a></li>
-	<!-- ELSE -->
-	<li data-col-pagenum="2"><a class="button" href="{lt_2.PAGE_URL}" role="button">{lt_2.PAGE_NUMBER}</a></li>
-	<!-- ENDIF -->
-<!-- END lt_2 -->
+<ul>
+	{% if LT_2_BASE_URL and LT_2_TOTAL_PAGES > 6 %}
+		<li class="dropdown-container dropdown-button-control dropdown-page-jump page-jump">
+			<a class="button button-icon-only dropdown-trigger" href="javascript:void(0);" title="{{ lang('JUMP_TO_PAGE_CLICK') }}" role="button"><i class="icon fa-level-down fa-rotate-270" aria-hidden="true"></i><span class="sr-only">{{ LT_2_PAGE_NUMBER }}</span></a>
+			<div class="dropdown hidden">
+				<div class="pointer"><div class="pointer-inner"></div></div>
+				<ul class="dropdown-contents">
+					<li>{{ lang('JUMP_TO_PAGE') }}{{ lang('COLON') }}</li>
+					<li class="page-jump-form">
+						<input type="number" name="page-number" min="1" max="999999" title="{{ lang('JUMP_PAGE') }}" class="inputbox tiny" data-per-page="{{ LT_2_PER_PAGE }}" data-base-url="{{ LT_2_BASE_URL|e('html_attr') }}" data-start-name="{{ LT_2_START_NAME }}" />
+						<a data-col="2" data-total-pages="{{ LT_2_TOTAL_PAGES }}" class="button2 lt-pagination-go" href="{{ LT_2_BASE_URL }}" title="{{ lang('GO') }}" role="button">{{ lang('GO') }}</a>
+					</li>
+				</ul>
+			</div>
+		</li>
+	{% endif %}
+
+	{% if lt_2 %}
+		{% for lt in lt_2 %}
+			{% if lt.S_IS_PREV %}
+				<li  data-col-prev="2" class="arrow previous"><a class="button button-icon-only" href="{{ lt.PAGE_URL }}" rel="prev" role="button"><i class="icon fa-chevron-left fa-fw" aria-hidden="true"></i><span class="sr-only">{{ lang('PREVIOUS') }}</span></a></li>
+			{%  elseif lt.S_IS_CURRENT %}
+				<li data-col-pagenum="2" class="active"><span>{{ lt.PAGE_NUMBER }}</span></li>
+			{%  elseif lt.S_IS_ELLIPSIS %}
+				<li class="ellipsis" role="separator"><span>{{ lang('ELLIPSIS') }}</span></li>
+			{%  elseif lt.S_IS_NEXT %}
+				<li  data-col-next="2" class="arrow next"><a class="button button-icon-only" href="{lt.PAGE_URL}" rel="next" role="button"><i class="icon fa-chevron-right fa-fw" aria-hidden="true"></i><span class="sr-only">{{ lang('NEXT') }}</span></a></li>
+			{% else %}
+				<li data-col-pagenum="2"><a class="button" href="{{ lt.PAGE_URL}}" role="button">{{ lt.PAGE_NUMBER }}</a></li>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
 </ul>
