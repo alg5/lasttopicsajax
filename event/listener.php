@@ -180,7 +180,8 @@ class listener implements EventSubscriberInterface
 		$event['data'] = $data;
 	}
 
-	public function ucp_prefs_view_update_data($event) {
+	public function ucp_prefs_view_update_data($event)
+	{
 		$data = $event['data'];
 		$sql_ary = $event['sql_ary'];
 		if (isset($this->user->data['lt_show_on_index']))
