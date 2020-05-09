@@ -562,11 +562,11 @@ class lasttopicsajax_handler
 			{
 				$str .= '<li data-col-pagenum="' . $col_num .'" class="active"><span>' . $item['PAGE_NUMBER'] . '</span></li>';
 			}
-			else if($item['S_IS_ELLIPSIS'])
+			else if ($item['S_IS_ELLIPSIS'])
 			{
 			 $str .= '<li class="ellipsis" role="separator"><span>' . $this->user->lang['ELLIPSIS'] . '</span></li>';
 			}
-			else if($item['S_IS_NEXT'])
+			else if ($item['S_IS_NEXT'])
 			{
 				$str .= 	'<li  data-col-next="' . $col_num .'" class="arrow next"><a class="button button-icon-only" href="' . $item['PAGE_URL'] .'" rel="next" role="button"><i class="icon fa-chevron-right fa-fw" aria-hidden="true"></i><span class="sr-only">{L_NEXT}</span></a></li>';
 			}
@@ -602,7 +602,7 @@ class lasttopicsajax_handler
 			}
 			$is_topicpreview = $this->phpbb_extension_manager->is_enabled('vse/topicpreview');
 			//append for preview
-			if($is_topicpreview)
+			if ($is_topicpreview)
 			{
 				$str .= 	htmlentities('<div class="topic_preview_content" style="display:none;">');
 				$str .= 	htmlentities('<strong>' . $this->user->lang['FIRST_POST']  . '<hr>');

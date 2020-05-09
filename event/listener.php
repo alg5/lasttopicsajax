@@ -90,7 +90,8 @@ class listener implements EventSubscriberInterface
 			//'core.ucp_prefs_view_update_data'	=> 'ucp_prefs_view_update_data',
 		);
 	}
-	public function user_setup($event) {
+	public function user_setup($event)
+	{
 		$lang_set_ext = $event['lang_set_ext'];
 		$lang_set_ext[] = array(
 			'ext_name' => 'alg/lasttopicsajax',
@@ -109,7 +110,7 @@ class listener implements EventSubscriberInterface
 		$show_news = true;
 		$show_news_on_index = (bool) $this->config['lasttopicsajax_show_on_index'];
 		//$set_width_captions = (int) $this->config['lasttopicsajax_set_width_captions'];
-	  
+
 		if ($this->user->data['user_id'] == ANONYMOUS && !$this->config['lasttopicsajax_show_on_index_for_guests'])
 		{
 			$show_news_on_index = false;
@@ -130,12 +131,12 @@ class listener implements EventSubscriberInterface
 			}
 			$rowset = $this->lasttopicsajax_handler->get_latest_topics_by_column(1, $start);
 			if ($rowset)
-			{            
+			{
 				$show_col1 = (bool) sizeof( $rowset) >0;
 			}
 			$rowset = $this->lasttopicsajax_handler->get_latest_topics_by_column(0, $start);
 			if ($rowset)
-			{            
+			{
 				$show_col0 = (bool) sizeof( $rowset) >0;
 			}
 			$show_news = $show_col0 || $show_col1 || $show_col2;
@@ -154,31 +155,31 @@ class listener implements EventSubscriberInterface
 			'SHOW_COL0'	=> $show_col0,
 			'S_SHOW_NEWS'	=> $show_news,
 			'S_SHOW_NEWS_ON_INDEX'	=> $show_news_on_index,
-		));        
+		));
 	}
 	public function page_header_after($event)
 	{
 		$this->user->add_lang_ext('alg/lasttopicsajax', 'lasttopicsajax');
 		$this->user->add_lang_ext('alg/lasttopicsajax', 'info_acp_lasttopicsajax');
-		
 		$this->template->assign_vars(array(
 			'U_LASTTOPICSAJAX_PATH_POPUP'				=> $this->lasttopicsajax_handler->get_router_path('popup'),
 			'U_LASTTOPICSAJAX_PATH_MARKREAD'			=> $this->lasttopicsajax_handler->get_router_path('markread'),
- 			'U_LASTTOPICSAJAX_PATH_TOPICMARKREAD'			=> $this->lasttopicsajax_handler->get_router_path('topicmarkread'),
- 			'U_LASTTOPICSAJAX_PATH_PAGINATION'			=> $this->lasttopicsajax_handler->get_router_path('pagination'),
- 			'S_ROWS_AMOUNT'			=> isset($this->config['lasttopicsajax_rows_amount'] ) ? (int) $this->config['lasttopicsajax_rows_amount'] : 5,
+			'U_LASTTOPICSAJAX_PATH_TOPICMARKREAD'			=> $this->lasttopicsajax_handler->get_router_path('topicmarkread'),
+			'U_LASTTOPICSAJAX_PATH_PAGINATION'			=> $this->lasttopicsajax_handler->get_router_path('pagination'),
+			'S_ROWS_AMOUNT'			=> isset($this->config['lasttopicsajax_rows_amount'] ) ? (int) $this->config['lasttopicsajax_rows_amount'] : 5,
 			'S_TOPICPREVIEW'	=>  (bool) $this->phpbb_extension_manager->is_enabled('vse/topicpreview'),
-		));        
+		));
 	}
 
-	public function ucp_prefs_view_data($event) {
+	public function ucp_prefs_view_data($event)
+	{
 		$data = $event['data'];
 		$data = array_merge($data, array(
 			'lt_show_on_index'		=> $this->request->variable('lt_show_on_index', (bool) (isset($this->user->data['lt_show_on_index']) ? $this->user->data['lt_show_on_index'] : false))
 		));
 		$event['data'] = $data;
 	}
-	
+
 	public function ucp_prefs_view_update_data($event) {
 		$data = $event['data'];
 		$sql_ary = $event['sql_ary'];
@@ -193,14 +194,14 @@ class listener implements EventSubscriberInterface
 
 	private function character_limit(&$title, $limit = 0)
 	{
-	   $title = censor_text($title);
-	   if ($limit > 0)
-	   {
-		  return (utf8_strlen($title) > $limit + 3) ? truncate_string($title, $limit) . '...' : $title;
-	   }
-	   else
-	   {
-		  return $title;
-	   }
+		$title = censor_text($title);
+		if ($limit > 0)
+		{
+			return (utf8_strlen($title) > $limit + 3) ? truncate_string($title, $limit) . '...' : $title;
+		}
+		else
+		{
+			return $title;
+		}
 	}
 }

@@ -44,7 +44,7 @@ class v_1_0_0 extends \phpbb\db\migration\migration
 			array('config.add', array('lasttopicsajax_version', '1.0.0')),
 					array('config.add', array('lasttopicsajax_rows_amount', '5')),
 					array('config.add', array('lasttopicsajax_colums_amount', '3')),    //not in use now
-					 array('config.add', array('lasttopicsajax_show_on_index', '1')),                   
+					 array('config.add', array('lasttopicsajax_show_on_index', '1')),
 					array('config.add', array('lasttopicsajax_show_on_index_for_guests', '1')),
 					array('config.add', array('lasttopicsajax_set_width_captions', '0')),
 					array('config.add', array('lasttopicsajax_ids_exclude', '')),
