@@ -35,8 +35,6 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-	'LAST_NEWS'			=> 'News',
-	'LAST_TOPICS'		=> 'Last topics',
-	'LAST_QUESTIONS'		=> 'LAST_QUESTIONS',
-	'LAST_CHGK_QUESTIONS_CREATE_DATE'		=> 'The question was asked',
+	'LAST_NEWS'		=> 'News',
+	'FIRST_POST'	=> 'First post',
 ));

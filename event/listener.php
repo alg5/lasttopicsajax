@@ -92,12 +92,14 @@ class listener implements EventSubscriberInterface
 	}
 	public function user_setup($event)
 	{
+		$this->user->add_lang('viewforum');
 		$lang_set_ext = $event['lang_set_ext'];
 		$lang_set_ext[] = array(
 			'ext_name' => 'alg/lasttopicsajax',
 			'lang_set' => 'info_acp_lasttopicsajax',
 		);
 		$event['lang_set_ext'] = $lang_set_ext;
+		
 		$this->template->assign_vars(array(
 			'S_USER_SHOW_NEWS_ON_INDEX'	=> $this->user->data['lt_show_on_index'],
 		));

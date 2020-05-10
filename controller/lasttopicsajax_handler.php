@@ -323,12 +323,12 @@ class lasttopicsajax_handler
 			/**
 			* Event to modify the SQL query before the topics data is retrieved
 			*
-			* @event alg.lasttopicsajax.sql_latest_topics_col_ . $num
+			* @event alg.lasttopicsajax.sql_latest_topics_ajax
 			* @var	array	sql_array		The SQL array
 			* @since 1.0.0
 			*/
 			$vars = array('sql_array');
-			extract($this->dispatcher->trigger_event('alg.lasttopicsajax.sql_latest_topics_col_' . $num, compact($vars)));
+			extract($this->dispatcher->trigger_event('alg.lasttopicsajax.sql_latest_topics_ajax' , compact($vars)));
 			$result = $this->db->sql_query_limit($this->db->sql_build_query('SELECT', $sql_array),  $howmany, $start);
 
 			$row_count = 0;
@@ -396,13 +396,13 @@ class lasttopicsajax_handler
 					/**
 					* Modify the topic data before it is assigned to the template
 					*
-					* @event alg.lasttopicssajax.modify_tpl_ary_latest_general_topics
+					* @event alg.lasttopicssajax.modify_tpl_ary_latest_topics_ajax
 					* @var	array	row			Array with topic data
 					* @var	array	tpl_ary		Template block array with topic data
 					* @since 1.0.0
 					*/
 					$vars = array('row', 'tpl_ary');
-					extract($this->dispatcher->trigger_event('alg.lasttopicssajax.modify_tpl_ary_latest_topics_' . $num, compact($vars)));
+					extract($this->dispatcher->trigger_event('alg.lasttopicssajax.modify_tpl_ary_latest_topics_ajax', compact($vars)));
 					$rowset_dst[] = $tpl_ary;
 					$this->template->assign_block_vars('latest_topics_' . $num, $tpl_ary);
 				}//end if
